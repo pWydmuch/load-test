@@ -19,7 +19,7 @@ public class LoadTestApplication {
 
 	@GetMapping("/greet")
 	public String  greet(){
-		return "Hi from k8s";
+		return "Hi from k8s with skaffold";
 	}
 
 }
