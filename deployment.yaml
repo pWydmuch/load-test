@@ -6,7 +6,7 @@ spec:
   selector:
     matchLabels:
       app: spring-boot-k8s
-  replicas: 2 # Number of replicas that will be created for this deployment
+  replicas: 1 # Number of replicas that will be created for this deployment
   template:
     metadata:
       labels:
@@ -19,4 +19,7 @@ spec:
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 8080
+          resources:
+            requests:
+              cpu: "100m"
 # The port that the container is running on in the cluster

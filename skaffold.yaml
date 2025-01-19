@@ -9,5 +9,6 @@ build:
         dockerfile: Dockerfile
 manifests:
   rawYaml:
-    - deployment.yml
+    - deployment.yaml
     - spring-boot-service.yaml
+    - HPA.yaml
