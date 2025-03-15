@@ -9,6 +9,10 @@ spec:
   replicas: 1 # Number of replicas that will be created for this deployment
   template:
     metadata:
+      annotations:
+        prometheus.io/path: /actuator/prometheus
+        prometheus.io/scrape: "true"
+        prometheus.io/port: "8080"
       labels:
         app: spring-boot-k8s
     spec:
