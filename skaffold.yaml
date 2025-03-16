@@ -11,4 +11,4 @@ manifests:
   rawYaml:
     - deployment.yaml
     - spring-boot-service.yaml
-    - HPA.yaml
+#    - HPA.yaml

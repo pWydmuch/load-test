@@ -1,0 +1,18 @@
+apiVersion: keda.sh/v1alpha1
+kind: ScaledObject
+metadata:
+  name: prometheus-scaledobject
+spec:
+  scaleTargetRef:
+    name: spring-boot-k8s
+  pollingInterval: 5
+  cooldownPeriod: 10
+  minReplicaCount: 1
+  maxReplicaCount: 10
+  triggers:
+    - type: prometheus
+      metadata:
+        serverAddress: http://prometheus-server.default.svc
+        metricName: greetings_per_second
+        threshold: "5"
+        query: http_server_requests_seconds_count{uri="/greet"}
