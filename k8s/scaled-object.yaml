@@ -9,10 +9,15 @@ spec:
   cooldownPeriod: 10
   minReplicaCount: 1
   maxReplicaCount: 10
+  advanced:
+    horizontalPodAutoscalerConfig:
+      behavior:
+        scaleDown:
+          stabilizationWindowSeconds: 0
   triggers:
     - type: prometheus
       metadata:
         serverAddress: http://prometheus-server.default.svc
         metricName: greetings_per_second
         threshold: "5"
-        query: sum(increase(http_server_requests_seconds_count{uri="/greet"}[2m]))
+        query: sum(increase(http_server_requests_seconds_count{uri="/greet"}[1m]))
