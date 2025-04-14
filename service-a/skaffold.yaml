@@ -14,3 +14,4 @@ manifests:
     - k8s/scaled-object.yaml
     - k8s/ingress.yaml
 # TODO jib, python( install uv/ruff), rust, go
+# deploy:  -> helm

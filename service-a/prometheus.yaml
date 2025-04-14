@@ -1,0 +1,10 @@
+global:
+  scrape_interval: 5s  # How often to scrape targets
+
+scrape_configs:
+  - job_name: 'spring-boot-app'
+    metrics_path: '/actuator/prometheus'  # Default Spring Boot Prometheus endpoint
+    static_configs:
+       - targets: ['172.17.0.1:8080']  # For Docker on Linux (alternative)
+
+## NOT USED for k8s env

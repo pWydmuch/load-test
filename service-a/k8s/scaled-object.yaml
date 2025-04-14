@@ -21,3 +21,4 @@ spec:
         metricName: greetings_per_second
         threshold: "5"
         query: sum(increase(http_server_requests_seconds_count{uri="/greet"}[1m]))
+#TODO can I have multiple triggers eg kafka
