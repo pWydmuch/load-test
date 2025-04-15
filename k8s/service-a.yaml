@@ -1,11 +1,11 @@
 apiVersion: apps/v1
 kind: Deployment # Kubernetes' resource kind we are creating
 metadata:
-  name: spring-boot-k8s
+  name: service-a
 spec:
   selector:
     matchLabels:
-      app: spring-boot-k8s
+      app: service-a
   replicas: 1 # Number of replicas that will be created for this deployment
   template:
     metadata:
@@ -14,16 +14,30 @@ spec:
         prometheus.io/scrape: "true"
         prometheus.io/port: "8080"
       labels:
-        app: spring-boot-k8s
+        app: service-a
     spec:
       containers:
-        - name: spring-boot-k8s
-          image: loadtest:1.0
+        - name: service-a
+          image: service-a:1.0
           # Image that will be used to containers in the cluster
-          imagePullPolicy: IfNotPresent
+          imagePullPolicy: IfNotPresent 
           ports:
             - containerPort: 8080
           resources:
             requests:
               cpu: "100m"
 # The port that the container is running on in the cluster
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: service-a-service
+spec:
+  selector:
+    app: service-a # same as deployment selector
+  ports:
+    - protocol: TCP
+      port: 8080
+      targetPort: 8080

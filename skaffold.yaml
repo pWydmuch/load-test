@@ -4,13 +4,13 @@ metadata:
   name: load-test
 build:
   artifacts:
-    - image: loadtest
+    - image: service-a
       docker:
         dockerfile: Dockerfile
+      context: service-a
 manifests:
   rawYaml:
-    - k8s/deployment.yaml
-    - k8s/spring-boot-service.yaml
+    - k8s/service-a.yaml
     - k8s/scaled-object.yaml
     - k8s/ingress.yaml
 # TODO jib, python( install uv/ruff), rust, go
