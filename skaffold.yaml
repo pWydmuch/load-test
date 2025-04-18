@@ -11,6 +11,7 @@ build:
 manifests:
   rawYaml:
     - k8s/service-a.yaml
+    - k8s/service-b.yaml
     - k8s/scaled-object.yaml
     - k8s/ingress.yaml
 # TODO jib, python( install uv/ruff), rust, go

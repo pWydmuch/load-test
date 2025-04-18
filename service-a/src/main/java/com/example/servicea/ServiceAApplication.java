@@ -1,5 +1,6 @@
 package com.example.servicea;
 
+import lombok.AllArgsConstructor;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -7,19 +8,19 @@ import org.springframework.web.bind.annotation.RestController;
 
 @SpringBootApplication
 @RestController
+@AllArgsConstructor
 public class ServiceAApplication {
+
+	private final ServiceBClient serviceBClient;
 
 	public static void main(String[] args) {
 		SpringApplication.run(ServiceAApplication.class, args);
 	}
 
-	@GetMapping("/test")
-	public void doSth(){
-	}
-
 	@GetMapping("/greet")
-	public String  greet(){
-		return "Hi from k8s with skaffold";
+	public String greet(){
+		String name = serviceBClient.name();
+		return "Hi " + name;
 	}
 
 }
