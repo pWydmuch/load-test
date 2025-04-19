@@ -15,7 +15,7 @@ public class ServiceBApplication {
 		SpringApplication.run(ServiceBApplication.class, args);
 	}
 
-	private final Set<String> names = Set.of("Alice", "Bob", "Charlie");
+	private final Set<String> names = Set.of("Alice2", "Bob2", "Charlie2");
 	@GetMapping("/name")
 	public String name() {
 		return names.stream()

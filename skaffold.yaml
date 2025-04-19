@@ -5,9 +5,13 @@ metadata:
 build:
   artifacts:
     - image: service-a
-      docker:
-        dockerfile: Dockerfile
+      jib:
+        type: gradle
       context: service-a
+    - image: service-b
+      jib:
+        type: gradle
+      context: service-b
 manifests:
   rawYaml:
     - k8s/service-a.yaml
@@ -15,4 +19,5 @@ manifests:
     - k8s/scaled-object.yaml
     - k8s/ingress.yaml
 # TODO jib, python( install uv/ruff), rust, go
+# CI/CD
 # deploy:  -> helm

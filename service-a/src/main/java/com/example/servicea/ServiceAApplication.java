@@ -20,7 +20,7 @@ public class ServiceAApplication {
 	@GetMapping("/greet")
 	public String greet(){
 		String name = serviceBClient.name();
-		return "Hi " + name;
+		return "Hey " + name;
 	}
 
 }

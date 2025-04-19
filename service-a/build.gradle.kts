@@ -2,10 +2,20 @@ plugins {
 	java
 	id("org.springframework.boot") version "3.4.1"
 	id("io.spring.dependency-management") version "1.1.7"
+	id("com.google.cloud.tools.jib") version "3.4.0"
 }
 
 group = "com.example"
 version = "0.0.1-SNAPSHOT"
+
+jib {
+	from {
+		image = "openjdk:21"
+	}
+	to {
+		image = "service-a"
+	}
+}
 
 java {
 	toolchain {

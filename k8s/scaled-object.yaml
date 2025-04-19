@@ -5,6 +5,8 @@ metadata:
 spec:
   scaleTargetRef:
     name: spring-boot-k8s
+# will it work if there's nothing correspondig to spring-boot-k8s
+# seems like it doesn't complain about it but prolly scaling won't work
   pollingInterval: 5
   cooldownPeriod: 10
   minReplicaCount: 1
