@@ -4,7 +4,8 @@ metadata:
   name: prometheus-scaledobject
 spec:
   scaleTargetRef:
-    name: spring-boot-k8s
+    name: service-a
+#TODO
 # will it work if there's nothing correspondig to spring-boot-k8s
 # seems like it doesn't complain about it but prolly scaling won't work
   pollingInterval: 5
@@ -24,3 +25,4 @@ spec:
         threshold: "5"
         query: sum(increase(http_server_requests_seconds_count{uri="/greet"}[1m]))
 #TODO can I have multiple triggers eg kafka
+#TODO how to mange multiple microservices -> each its own scaled object?
