@@ -15,8 +15,8 @@ public class ServiceCApplication {
 	}
 
 	@Bean
-	public Supplier<String> eventSupplier() {
-		return () -> "Event " + id++;
+	public Supplier<Long> eventSupplier() {
+		return () -> id++;
 	}
 //TODO first do it without k8s
 }

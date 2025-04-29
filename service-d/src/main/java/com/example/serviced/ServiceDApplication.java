@@ -14,7 +14,8 @@ public class ServiceDApplication {
 	}
 
 	@Bean
-	public Consumer<String> eventConsumer() {
+	public Consumer<Long> eventConsumer() {
 		return event -> System.out.println("Received event: " + event);
 	}
+
 }
