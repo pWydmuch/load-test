@@ -1,0 +1,43 @@
+apiVersion: apps/v1
+kind: Deployment # Kubernetes' resource kind we are creating
+metadata:
+  name: service-c
+spec:
+  selector:
+    matchLabels:
+      app: service-c
+  replicas: 1 # Number of replicas that will be created for this deployment
+  template:
+    metadata:
+      annotations:
+        prometheus.io/path: /actuator/prometheus
+        prometheus.io/scrape: "true"
+        prometheus.io/port: "8080"
+      labels:
+        app: service-c
+    spec:
+      containers:
+        - name: service-c
+          image: service-c:1.0
+          # Image that will be used to containers in the cluster
+          imagePullPolicy: IfNotPresent 
+          ports:
+            - containerPort: 8080
+          resources:
+            requests:
+              cpu: "100m"
+# The port that the container is running on in the cluster
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: service-c-service
+spec:
+  selector:
+    app: service-c # same as deployment selector
+  ports:
+    - protocol: TCP
+      port: 8080
+      targetPort: 8080

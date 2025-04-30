@@ -15,7 +15,12 @@ public class ServiceDApplication {
 
 	@Bean
 	public Consumer<Long> eventConsumer() {
-		return event -> System.out.println("Received event: " + event);
+		return event -> {
+			System.out.println("Received event: " + event);
+			try {
+				Thread.sleep(1000); // Simulate processing time
+			} catch (InterruptedException ignored) {}
+		};
 	}
 
 }

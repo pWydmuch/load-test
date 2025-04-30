@@ -18,5 +18,4 @@ public class ServiceCApplication {
 	public Supplier<Long> eventSupplier() {
 		return () -> id++;
 	}
-//TODO first do it without k8s
 }

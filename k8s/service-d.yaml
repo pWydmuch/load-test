@@ -1,0 +1,43 @@
+apiVersion: apps/v1
+kind: Deployment # Kubernetes' resource kind we are creating
+metadata:
+  name: service-d
+spec:
+  selector:
+    matchLabels:
+      app: service-d
+  replicas: 1 # Number of replicas that will be created for this deployment
+  template:
+    metadata:
+      annotations:
+        prometheus.io/path: /actuator/prometheus
+        prometheus.io/scrape: "true"
+        prometheus.io/port: "8080"
+      labels:
+        app: service-d
+    spec:
+      containers:
+        - name: service-d
+          image: service-d:1.0
+          # Image that will be used to containers in the cluster
+          imagePullPolicy: IfNotPresent 
+          ports:
+            - containerPort: 8080
+          resources:
+            requests:
+              cpu: "100m"
+# The port that the container is running on in the cluster
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: service-d-service
+spec:
+  selector:
+    app: service-d # same as deployment selector
+  ports:
+    - protocol: TCP
+      port: 8080
+      targetPort: 8080

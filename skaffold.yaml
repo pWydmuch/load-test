@@ -12,13 +12,25 @@ build:
       jib:
         type: gradle
       context: service-b
+    - image: service-c
+      jib:
+        type: gradle
+      context: service-c
+    - image: service-d
+      jib:
+        type: gradle
+      context: service-d
 manifests:
   rawYaml:
     - k8s/service-a.yaml
     - k8s/service-b.yaml
+    - k8s/service-c.yaml
+    - k8s/service-d.yaml
     - k8s/scaled-object.yaml
     - k8s/ingress.yaml
 # TODO jib, python( install uv/ruff), rust, go
+# PostgresDB
 # Config reload -> with spring config/config maps
+# do kafka on k8s remain state?
 # CI/CD
 # deploy:  -> helm

@@ -15,6 +15,7 @@ jib {
 	}
 	to {
 		image = "service-b"
+		version = "1.0"
 	}
 }
 
